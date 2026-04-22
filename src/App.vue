@@ -4,20 +4,30 @@ import page2 from './components/page2.vue'
 import page3 from './components/page3.vue'
 import page4 from './components/page4.vue';
 import page5 from './components/page5.vue';
-
-
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
-    <div>
-        <RouterLink :to="{name:'Page1'}">1</RouterLink>
-        <RouterLink :to="{name:'Page2'}">2</RouterLink>
-        <RouterLink :to="{name:'Page3'}">3</RouterLink>
-        <RouterLink :to="{name:'Page4'}">4</RouterLink>
-        <RouterLink :to="{name:'Page5'}">5</RouterLink>
-    </div>
-    <RouterView />
+  <div class="app">
+    <Header />
 
+    <main class="main">
+      <RouterView />
+    </main>
+
+    <Footer />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+</style>
