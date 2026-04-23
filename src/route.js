@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import pageNone from "./components/PageNone.vue";
 import page1 from "./components/page1.vue";
 import page2 from "./components/page2.vue";
 import page3 from "./components/page3.vue";
@@ -10,7 +11,8 @@ const routes = [
     {path: '/page2', component: page2, name: 'Page2'},
     {path: '/page3', component: page3, name: 'Page3'},
     {path: '/page4', component: page4, name: 'Page4'},
-    {path: '/page5', component: page5, name: 'Page5'}
+    {path: '/page5', component: page5, name: 'Page5'},
+    {path:'/:pathName(.*)', component:pageNone,name:'PageNone'}
 ]
 
 export const router = createRouter({
