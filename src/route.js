@@ -5,6 +5,7 @@ import page2 from "./components/page2.vue";
 import page3 from "./components/page3.vue";
 import page4 from "./components/page4.vue";
 import page5 from "./components/page5.vue";
+import CaseCard from "./components/caseCard.vue";
 
 const routes = [
     {path: '/', component: page1, name: 'Page1'},
@@ -12,6 +13,7 @@ const routes = [
     {path: '/page3', component: page3, name: 'Page3'},
     {path: '/page4', component: page4, name: 'Page4'},
     {path: '/page5', component: page5, name: 'Page5'},
+    {path: '/caseCard', component: CaseCard, name: 'caseCard'},
     {path:'/:pathName(.*)', component:pageNone,name:'PageNone'}
 ]
 

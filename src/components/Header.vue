@@ -13,6 +13,7 @@ import { balance, addMoney, removeMoney } from '../composables/useUsers.js';
       <RouterLink :to="{ name: 'Page3' }">Ставки</RouterLink>
       <RouterLink :to="{ name: 'Page4' }">Слоты</RouterLink>
       <RouterLink :to="{ name: 'Page5' }">Live Casino</RouterLink>
+      <RouterLink :to="{ name: 'caseCard' }">Live Casino</RouterLink>
     </nav>
 
     <div class="user-block">

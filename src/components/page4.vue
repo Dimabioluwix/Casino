@@ -4,6 +4,7 @@ const users = useUsers()
 </script>
 <template>
    <div>Текст страницы 4</div>
+   
 </template>
 <style scoped>
 

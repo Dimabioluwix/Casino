@@ -21,7 +21,6 @@ function movement() {
 }
 
 //                                     Баланс Игрока
-
 // Инициализируем баланс
 const initialBalance = localStorage.getItem('user_balance');
 export const balance = ref(initialBalance ? parseInt(initialBalance) : 0);
