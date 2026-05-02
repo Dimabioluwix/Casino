@@ -14,11 +14,10 @@
 # Блог с фермы
 
 Видеоблог с фермы: прогулка по необычному месту, разговоры на ходу и атмосферные кадры природы.  
-<<<<<<< HEAD
+
 [![Видеоблог с фермы](https://raw.githubusercontent.com/Dimabioluwix/Casino/main/src/assets/preview.png)](https://youtu.be/50pOrF9Zs_Y?si=oRFDNRa5IG3q4kcN)
-=======
-Оригинальное видео: [[!Header](https://github.com/Dimabioluwix/Casino/blob/main/src/assets/preview.png)](https://youtu.be/50pOrF9Zs_Y?si=oRFDNRa5IG3q4kcN)
->>>>>>> 85c732512cf56660ca7b513d804d97427b11e349
+
+
 
 ---
 
