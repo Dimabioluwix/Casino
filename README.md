@@ -16,7 +16,7 @@
 # Блог с фермы
 
 Видеоблог с фермы: прогулка по необычному месту, разговоры на ходу и атмосферные кадры природы.  
-Оригинальное видео: [![Preview](https://raw.githubusercontent.com/Dimabioluwix/Casino/main/src/assets/preview.png)](https://youtu.be/50pOrF9Zs_Y?si=oRFDNRa5IG3q4kcN)
+Оригинальное видео: [![Preview](src/assets/preview.png)](https://youtu.be/50pOrF9Zs_Y?si=oRFDNRa5IG3q4kcN)
 
 ---
 
