@@ -8,14 +8,13 @@
   <p><strong>Единственное казино, где выпадает не только джекпот, но и свежайшая молочная продукция!</strong></p>
   <p><em>"Запомни этот вкус. Навсегда."</em></p>
 
-  ![Header](https://raw.githubusercontent.com/Dimabioluwix/Casino/main/src/assets/banner_smaev.jpg)
-  
+  ![Header Banner](https://raw.githubusercontent.com/Dimabioluwix/Casino/main/src/assets/banner_smaev.jpg)
 </div>
 
 # Блог с фермы
 
 Видеоблог с фермы: прогулка по необычному месту, разговоры на ходу и атмосферные кадры природы.  
-[![Видеоблог с фермы](src/assets/preview.png)](https://youtu.be/50pOrF9Zs_Y?si=oRFDNRa5IG3q4kcN)
+[![Видеоблог с фермы](https://raw.githubusercontent.com/Dimabioluwix/Casino/main/src/assets/preview.png)](https://youtu.be/50pOrF9Zs_Y?si=oRFDNRa5IG3q4kcN)
 
 ---
 
