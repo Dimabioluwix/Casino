@@ -2,22 +2,23 @@
 import { ref } from 'vue';
 import { balance } from '../composables/useUsers.js';
 
-const s = ref(['❓', '❓', '❓']); // Слоты
-const L = ref(false); // Состояние загрузки
-const msg = ref('Нажмите, чтобы крутить');
+const s = ref(['❓', '❓', '❓']);
+const b = ref(0); // Счетчик игр
+const L = ref(false);
+const msg = ref('Удачи!');
 
 function play() {
-    // ПРОВЕРКА БАЛАНСА
     if (balance.value < 50) {
         msg.value = 'Недостаточно средств!';
         return;
     }
 
+    // Списание суммы за ставку
+    balance.value -= 50;
     L.value = true;
 
     setTimeout(function() {
         const icons = ['🍒', '🍋', '💎', '7️⃣'];
-        
         s.value = [
             icons[Math.floor(Math.random() * icons.length)],
             icons[Math.floor(Math.random() * icons.length)],
@@ -25,7 +26,8 @@ function play() {
         ];
 
         L.value = false;
-        msg.value = 'Результат: ' + s.value[0] + ' ' + s.value[1] + ' ' + s.value[2];
+        b.value++; // Инкремент счетчика
+        msg.value = 'Ставка принята. Крутим дальше?';
     }, 800);
 }
 </script>
@@ -44,6 +46,7 @@ function play() {
         <div class="info">
             <p>{{ msg }}</p>
             <p>Кошелёк: {{ balance }}₽</p>
+            <p>Всего игр: {{ b }}</p>
         </div>
     </div>
 </template>
