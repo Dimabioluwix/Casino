@@ -2,55 +2,56 @@
 import { ref } from 'vue';
 import { balance } from '../composables/useUsers.js';
 
-const slots = ref(['❓', '❓', '❓']);
-const isSpinning = ref(false);
+const s = ref(['❓', '❓', '❓']); // Слоты
+const L = ref(false); // Состояние загрузки
+const msg = ref('Нажмите, чтобы крутить');
 
-function spin() {
-  // Проверка баланса перед запуском
-  if (balance.value < 50) {
-    alert('Недостаточно средств');
-    return;
-  }
+function play() {
+    // ПРОВЕРКА БАЛАНСА
+    if (balance.value < 50) {
+        msg.value = 'Недостаточно средств!';
+        return;
+    }
 
-  isSpinning.value = true;
+    L.value = true;
 
-  setTimeout(() => {
-    const symbols = ['🍒', '🍋', '💎', '7️⃣'];
-    
-    slots.value = [
-      symbols[Math.floor(Math.random() * symbols.length)],
-      symbols[Math.floor(Math.random() * symbols.length)],
-      symbols[Math.floor(Math.random() * symbols.length)]
-    ];
+    setTimeout(function() {
+        const icons = ['🍒', '🍋', '💎', '7️⃣'];
+        
+        s.value = [
+            icons[Math.floor(Math.random() * icons.length)],
+            icons[Math.floor(Math.random() * icons.length)],
+            icons[Math.floor(Math.random() * icons.length)]
+        ];
 
-    isSpinning.value = false;
-  }, 800);
+        L.value = false;
+        msg.value = 'Результат: ' + s.value[0] + ' ' + s.value[1] + ' ' + s.value[2];
+    }, 800);
 }
 </script>
 
 <template>
-  <div class="slots-page">
-    <h1>Игровые Слоты</h1>
-    <div class="machine-container">
-      <div class="slots-display">
-        <div class="slot-box" v-for="(symbol, index) in slots" :key="index">
-          {{ symbol }}
+    <div class="game-container">
+        <div>Игровые Слоты</div>
+        <div class="display">
+            {{ s[0] }} | {{ s[1] }} | {{ s[2] }}
         </div>
-      </div>
-      <div class="controls-section">
-        <button @click="spin" :disabled="isSpinning" class="spin-btn">
-          {{ isSpinning ? 'Вращение...' : 'ИСПЫТАТЬ УДАЧУ' }}
-        </button>
-      </div>
+        <div class="actions">
+            <button @click="function() { play() }" :disabled="L">
+                КРУТИТЬ (50₽)
+            </button>
+        </div>
+        <div class="info">
+            <p>{{ msg }}</p>
+            <p>Кошелёк: {{ balance }}₽</p>
+        </div>
     </div>
-  </div>
 </template>
 
 <style scoped>
-.slots-page { display: flex; flex-direction: column; align-items: center; padding: 40px; color: white; }
-.machine-container { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 2px solid #333; }
-.slots-display { display: flex; gap: 15px; margin-bottom: 25px; }
-.slot-box { background: #222; width: 100px; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem; border-radius: 10px; }
-.spin-btn { background: #4caf50; color: white; padding: 15px 40px; border: none; border-radius: 10px; cursor: pointer; width: 100%; font-weight: bold; }
-.spin-btn:disabled { background: #333; cursor: not-allowed; }
+.game-container { padding: 25px; background: #1a1a1a; color: white; border-radius: 12px; text-align: center; }
+.display { font-size: 3rem; margin: 20px 0; color: #4caf50; }
+button { padding: 12px 24px; cursor: pointer; background: #333; color: white; border: 1px solid #555; font-weight: bold; }
+button:disabled { opacity: 0.5; }
+.info { border-top: 1px solid #333; padding-top: 15px; }
 </style>
