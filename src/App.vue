@@ -1,33 +1,26 @@
 <script setup>
-import page1 from './components/page1.vue'
-import page2 from './components/page2.vue'
-import page3 from './components/page3.vue'
-import page4 from './components/page4.vue';
-import page5 from './components/page5.vue';
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+
+const route = useRoute()
+
+const showLayout = computed(function () {
+  return route.name !== 'Login' && route.name !== 'Register'
+})
 </script>
 
 <template>
-  <div class="app">
-    <Header />
-
-    <main class="main">
-      <RouterView />
-    </main>
-
-    <Footer />
-  </div>
+  <Header v-if="showLayout" />
+  <main class="main-content">
+    <RouterView />
+  </main>
+  <Footer v-if="showLayout" />
 </template>
 
 <style scoped>
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main {
+.main-content {
   flex: 1;
 }
 </style>
