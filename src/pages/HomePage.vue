@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import CaseCard from '../components/CaseCard.vue'
+import CaseCard from './components/CaseCard.vue'
 
 const slides = [
   { id: 1, title: 'Бонус +200% к депозиту!', text: 'Начни играть прямо сейчас', theme: 'slide-purple' },
