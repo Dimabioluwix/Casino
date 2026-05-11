@@ -1,23 +1,94 @@
-import { createRouter, createWebHistory } from "vue-router";
-import pageNone from "./components/PageNone.vue";
-import page1 from "./components/page1.vue";
-import page2 from "./components/page2.vue";
-import page3 from "./components/page3.vue";
-import page4 from "./components/page4.vue";
-import page5 from "./components/page5.vue";
-import CaseCard from "./components/caseCard.vue";
+import { createRouter, createWebHashHistory } from 'vue-router'
+import { isLoggedIn } from './composables/useAuth.js'
+
+// Импорты страниц (проверь, чтобы эти файлы лежали в src/pages/)
+import HomePage from './pages/HomePage.vue'
+import HighLowPage from './pages/HighLowPage.vue'
+import BetsPage from './pages/BetsPage.vue'
+import SlotsPage from './pages/SlotsPage.vue'
+import CaseOpenPage from './pages/CaseOpenPage.vue'
+import LoginPage from './pages/LoginPage.vue'
+import RegisterPage from './pages/RegisterPage.vue'
+import NotFoundPage from './pages/NotFoundPage.vue'
+
+
+import CaseCard from '../components/CaseCard.vue' 
 
 const routes = [
-    {path: '/', component: page1, name: 'Page1'},
-    {path: '/page2', component: page2, name: 'Page2'},
-    {path: '/page3', component: page3, name: 'Page3'},
-    {path: '/page4', component: page4, name: 'Page4'},
-    {path: '/page5', component: page5, name: 'Page5'},
-    {path: '/caseCard', component: CaseCard, name: 'caseCard'},
-    {path:'/:pathName(.*)', component:pageNone,name:'PageNone'}
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
+    meta: { guest: true }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage,
+    meta: { guest: true }
+  },
+  {
+    path: '/',
+    name: 'Page1',
+    component: HomePage,
+    meta: { auth: true }
+  },
+  {
+    path: '/high-low',
+    name: 'Page2',
+    component: HighLowPage,
+    meta: { auth: true }
+  },
+  {
+    path: '/bets',
+    name: 'Page3',
+    component: BetsPage,
+    meta: { auth: true }
+  },
+  {
+    path: '/slots',
+    name: 'Page4',
+    component: SlotsPage,
+    meta: { auth: true }
+  },
+  {
+    path: '/case/:id',
+    name: 'CaseOpen',
+    component: CaseOpenPage,
+    meta: { auth: true }
+  },
+  {
+    path: '/caseCard',
+    name: 'caseCard',
+    component: CaseCard,
+    meta: { auth: true }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFoundPage
+  }
 ]
 
-export const router = createRouter({
-    history: createWebHistory(),
-    routes
+const router = createRouter({
+  // ВАЖНО: Используем createWebHashHistory для работы на GitHub Pages
+  history: createWebHashHistory('/Casino/'), 
+  routes
 })
+
+// Логика защиты роутов (Guard)
+router.beforeEach(function (to, from, next) {
+  if (to.meta.auth && !isLoggedIn.value) {
+    next({ name: 'Login' })
+    return
+  }
+
+  if (to.meta.guest && isLoggedIn.value) {
+    next({ name: 'Page1' })
+    return
+  }
+
+  next()
+})
+
+export default router
