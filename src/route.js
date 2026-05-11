@@ -12,7 +12,7 @@ import RegisterPage from './pages/RegisterPage.vue'
 import NotFoundPage from './pages/NotFoundPage.vue'
 
 
-import CaseCard from '../components/CaseCard.vue' 
+import CaseCard from './components/CaseCard.vue' 
 
 const routes = [
   {
